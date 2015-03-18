@@ -12,7 +12,7 @@ cd ../
 FILE_TO_READ=$scriptDir/repositoryList.properties
    while read line; do
      if [ -n "$line" ]; then
-       cd $line
+       cd $scriptDir/repos/$line
        pwd   
        repository=$line
        echo "repository="$repository
