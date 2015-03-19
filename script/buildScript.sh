@@ -89,5 +89,3 @@ echo "Built teiid-extensions"
 
 #echo "Built $TEIIDPROJ"
 
-
-cd ../..

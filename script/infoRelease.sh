@@ -7,8 +7,10 @@ scriptDir=$(dirname "$SCRIPT")
 
 cd $scriptDir
 
+# if the repos have already been downloaded, don't re-download, 
+# remove manually if u wish to down load again
+# in jenkins this won't be an issue with the workspace being cleaned
 if [ ! -d "$scriptDir/repos" ]; then
-	rm -rf $scriptDir/repos
 	mkdir $scriptDir/repos
 fi
 
@@ -102,12 +104,12 @@ cd $scriptDir/repos
  
 cd $scriptDir
 
-. ./buildScript.sh $scriptDir/repos
+. $scriptDir/buildScript.sh $scriptDir/repos
 
 cd $scriptDir
 
-mv $scriptDir/repos/repURLS.txt .
-mv $scriptDir/repos/buildCommands.txt .
+mv $scriptDir/repos/repURLS.txt $scriptDir
+mv $scriptDir/repos/buildCommands.txt $scriptDir
 
 REPOSITORIES=$(cat repURLS.txt)
 MAVEN=$(mvn -version)
