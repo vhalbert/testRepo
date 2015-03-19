@@ -8,8 +8,21 @@ scriptDir=$(dirname "$SCRIPT")
 cd $scriptDir
 
 rm -rf $scriptDir/repos
-mv $scriptDir/repURLS.txt .
-mv $scriptDir/buildCommands.txt .
+rm $scriptDir/repURLS.txt .
+rm $scriptDir/buildCommands.txt .
+
+if [ ! -d "../reports" ]; then
+	mkdir ../reports
+]
+
+if [ ! -d "../reports/tags" ]; then
+	mkdir ../reports/tags
+]
+
+if [ ! -d "../reports/dependencyTree" ]; then
+	mkdir ../reports/dependencyTree
+]
+
 
 # where are the files stored
 cd ../reports/tags
