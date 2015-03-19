@@ -29,6 +29,10 @@ fi
 if [ -f "$scriptDir/repURLS.txt" ]; then
     rm $scriptDir/repURLS.txt
 fi
+if [ -f "$scriptDir/repos/repURLS.txt" ]; then
+    rm $scriptDir/repos/repURLS.txt
+fi
+
 if [ -f "$scriptDir/buildCommands.txt" ]; then
     rm $scriptDir/buildCommands.txt
 fi
@@ -92,13 +96,17 @@ CONTACTS=$(cat mails.properties)
 
 FILE_TO_READ=$scriptDir/repositories.properties
 
+PREFIX="http://"
 cd $scriptDir/repos
 
    while read line; do
      if [ -n "$line" ]; then
-       echo "$line" >> repURLS.txt
        
-       git clone --branch $productTag $line 
+       echo "$PREFIX$line" >> repURLS.txt
+       
+       url="$PREFIX$PARMS$line"
+       
+       git clone --branch $productTag $url 
      fi
    done < $FILE_TO_READ
  
