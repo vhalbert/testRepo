@@ -7,21 +7,30 @@ scriptDir=$(dirname "$SCRIPT")
 
 cd $scriptDir
 
-rm -rf $scriptDir/repos
-rm $scriptDir/repURLS.txt .
-rm $scriptDir/buildCommands.txt .
+if [ -d "../reports" ]; then
+	rm -rf $scriptDir/repos
+	mkdir $scriptDir/repos
+fi
 
 if [ ! -d "../reports" ]; then
 	mkdir ../reports
-]
+fi
 
 if [ ! -d "../reports/tags" ]; then
 	mkdir ../reports/tags
-]
+fi
 
 if [ ! -d "../reports/dependencyTree" ]; then
 	mkdir ../reports/dependencyTree
-]
+fi
+
+if [ -f "$scriptDir/repURLS.txt" ]; then
+    rm $scriptDir/repURLS.txt
+fi
+if [ -f "$scriptDir/buildCommands.txt" ]; then
+    rm $scriptDir/buildCommands.txt
+fi
+
 
 
 # where are the files stored
@@ -76,7 +85,6 @@ CONTACTS=$(cat mails.properties)
 
 FILE_TO_READ=$scriptDir/repositories.properties
 
-mkdir $scriptDir/repos
 cd $scriptDir/repos
 
    while read line; do
@@ -178,6 +186,3 @@ EOF
    # best not to push automatically as it is always possible we need 
    # to fix something locally before pushing
    #git push origin master
-
-
-
