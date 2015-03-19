@@ -38,10 +38,10 @@ cd ../reports/tags
 fileDir=$(pwd)
 
 
-if [ $# != 3 ] ; then
+if [ $# != 5 ] ; then
     echo
     echo "Usage:"
-    echo "  $0  productTag targetProdBuild cutOffDate"
+    echo "  $0  productTag targetProdBuild cutOffDate repoUsername repoPassword"
     echo "For example:"
     echo "  $0  6.2 ER6 2015-02-27"
     echo
@@ -51,6 +51,7 @@ fi
 echo "The prodcutTag is: "$1
 echo "The target product build is: "$2
 echo "The cutoff date is: " $3
+echo "The repo username is: " $4
 echo -n "Is this ok? (Hit control-c if is not): "
 read ok
 
@@ -59,6 +60,8 @@ read ok
 productTag=$1
 targetProdBuild=$2
 cutOffDate=$3
+BLD_USERNAME=$4
+BLD_PASSWORD=$5
 
 #checks if $productTag is already existing in a filename
 cd $fileDir
