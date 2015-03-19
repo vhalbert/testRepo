@@ -7,7 +7,7 @@ scriptDir=$(dirname "$SCRIPT")
 
 cd $scriptDir
 
-if [ -d "../reports" ]; then
+if [ ! -d "$scriptDir/repos" ]; then
 	rm -rf $scriptDir/repos
 	mkdir $scriptDir/repos
 fi
@@ -62,6 +62,8 @@ targetProdBuild=$2
 cutOffDate=$3
 BLD_USERNAME=$4
 BLD_PASSWORD=$5
+
+PARMS="$BLD_USERNAME:$BLD_PASSWORD"
 
 #checks if $productTag is already existing in a filename
 cd $fileDir
