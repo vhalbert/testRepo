@@ -5,14 +5,29 @@ SCRIPT="$(cd $(dirname "$0") && pwd)/$(basename "$0")"
 # Absolute path this script is in, thus /home/user/xxx
 scriptDir=$(dirname "$SCRIPT")
 
-cd $scriptDir
 
-# if the repos have already been downloaded, don't re-download, 
-# remove manually if u wish to down load again
-# in jenkins this won't be an issue with the workspace being cleaned
-if [ ! -d "$scriptDir/repos" ]; then
-	mkdir $scriptDir/repos
+if [ $# != 3 ] ; then
+    echo
+    echo "Usage:"
+    echo "  $0  productTag targetProdBuild cutOffDate"
+    echo "For example:"
+    echo "  $0  6.2 ER6 2015-02-27"
+    echo
+    exit 1
 fi
+
+echo "The prodcutTag is: "$1
+echo "The target product build is: "$2
+echo "The cutoff date is: " $3
+echo -n "Is this ok? (Hit control-c if is not): "
+read ok
+
+productTag=$1
+targetProdBuild=$2
+cutOffDate=$3
+
+
+cd $scriptDir
 
 if [ ! -d "../reports" ]; then
 	mkdir ../reports
@@ -29,47 +44,19 @@ fi
 if [ -f "$scriptDir/repURLS.txt" ]; then
     rm $scriptDir/repURLS.txt
 fi
-if [ -f "$scriptDir/repos/repURLS.txt" ]; then
-    rm $scriptDir/repos/repURLS.txt
-fi
 
 if [ -f "$scriptDir/buildCommands.txt" ]; then
     rm $scriptDir/buildCommands.txt
 fi
 
 
+mv $scriptDir/repos/repURLS.txt $scriptDir
+mv $scriptDir/repos/buildCommands.txt $scriptDir
 
 # where are the files stored
 cd ../reports/tags
 fileDir=$(pwd)
 
-
-if [ $# != 5 ] ; then
-    echo
-    echo "Usage:"
-    echo "  $0  productTag targetProdBuild cutOffDate repoUsername repoPassword"
-    echo "For example:"
-    echo "  $0  6.2 ER6 2015-02-27"
-    echo
-    exit 1
-fi
-
-echo "The prodcutTag is: "$1
-echo "The target product build is: "$2
-echo "The cutoff date is: " $3
-echo "The repo username is: " $4
-echo -n "Is this ok? (Hit control-c if is not): "
-read ok
-
-
-
-productTag=$1
-targetProdBuild=$2
-cutOffDate=$3
-BLD_USERNAME=$4
-BLD_PASSWORD=$5
-
-PARMS="$BLD_USERNAME:$BLD_PASSWORD"
 
 #checks if $productTag is already existing in a filename
 cd $fileDir
@@ -95,34 +82,6 @@ cd $scriptDir
 CONTACTS=$(cat mails.properties)
 
 FILE_TO_READ=$scriptDir/repositories.properties
-
-PREFIX="http://"
-cd $scriptDir/repos
-
-   while read line; do
-     if [ -n "$line" ]; then
-       
-       echo "$PREFIX$line" >> repURLS.txt
-       
-       url="$PREFIX$PARMS$line"
-       
-       git clone --branch $productTag $url 
-     fi
-   done < $FILE_TO_READ
- 
-cd $scriptDir
-
-${script.loc}/build.sh ${repos} ${project}
-
-mvn install -Dscript.log=$scriptDir -Dproject=teiid
-#. $scriptDir/buildScript.sh $scriptDir/repos
-
-exit
-
-cd $scriptDir
-
-mv $scriptDir/repos/repURLS.txt $scriptDir
-mv $scriptDir/repos/buildCommands.txt $scriptDir
 
 REPOSITORIES=$(cat repURLS.txt)
 MAVEN=$(mvn -version)

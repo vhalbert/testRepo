@@ -1,91 +1,72 @@
 #!/bin/bash
 
- echo "Building Teiid Projects"
  
- TEIIDPROJ=teiid
- 
- echo "Building $TEIIDPROJ ... "
+ TEIIDPROJ=$2
+
+ echo "Building Project: $TEIIDPROJ ..."
 
 cd $1/$TEIIDPROJ
 
-export MAVEN_OPTS="-Xms512m -Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=512m"
+if [ "$TEIIDPROJ" = "teiid" ]; then
 
-mvn -s ./settings.xml clean install -Prelease
+	export MAVEN_OPTS="-Xms512m -Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=512m"
 
-echo "$TEIIDPROJ:  mvn -s ./settings.xml clean install -Prelease" >> ../buildCommands.txt
-
-echo "Built $TEIIDPROJ"
+	mvn -s ./settings.xml clean install -Prelease
 
 #(integration tests) mvn install -Parquillian-tests
 #(docs) mvn javadoc:aggregate
 
-TEIIDPROJ=teiid-quickstarts
+	echo "$TEIIDPROJ:  mvn -s ./settings.xml clean install -Prelease" >> ../buildCommands.txt
 
- echo "Building $TEIIDPROJ ... "
+fi
 
-cd $1/$TEIIDPROJ
+if [ "$TEIIDPROJ" = "teiid-quickstarts" ]; then
 
-mvn -s ./settings.xml clean install -Ddist
+	mvn -s ./settings.xml clean install -Ddist
 
-echo "$TEIIDPROJ:  mvn -s ../teiid/settings.xml clean install -Ddist" >> ../buildCommands.txt
+	echo "$TEIIDPROJ:  mvn -s ../teiid/settings.xml clean install -Ddist" >> ../buildCommands.txt
+
+fi
+
+if [ "$TEIIDPROJ" = "teiid-dashboard" ]; then
+
+	mvn -s ./settings.xml clean install -Pfull
+
+	echo "$TEIIDPROJ:  mvn -s ../teiid/settings.xml clean install -Dfull" >> ../buildCommands.txt
+
+fi
+
+if [ "$TEIIDPROJ" = "teiid-webconsole" ]; then
+
+	mvn -s ./settings.xml clean install
+
+	echo "$TEIIDPROJ:  mvn -s ../teiid/settings.xml clean install " >> ../buildCommands.txt
+
+fi
+
+if [ "$TEIIDPROJ" = "teiid-rhq" ]; then
+
+	mvn -s ./settings.xml clean install
+
+	echo "teiid-rhq:  mvn -s ./settings.xml clean install" >> ../buildCommands.txt
+
+fi
+
+if [ "$TEIIDPROJ" = "teiid-extensions" ]; then
+
+	mvn -s ./settings.xml clean install
+
+	echo "teiid-extensions:  mvn -s ./settings.xml clean install" >> ../buildCommands.txt
+
+fi
+
+if [ "$TEIIDPROJ" = "teiid-tools" ]; then
+
+	mvn -s ./settings.xml clean install
+
+	echo "$TEIIDPROJ:  mvn -s ../teiid/settings.xml clean install " >> ../buildCommands.txt
+
+fi
 
 echo "Built $TEIIDPROJ"
-
-TEIIDPROJ=teiid-dashboard
-
- echo "Building $TEIIDPROJ ... "
-
-cd $1/$TEIIDPROJ
-
-mvn -s ./settings.xml clean install -Pfull
-
-echo "$TEIIDPROJ:  mvn -s ../teiid/settings.xml clean install -Dfull" >> ../buildCommands.txt
-
-echo "Built $TEIIDPROJ"
-
-TEIIDPROJ=teiid-webconsole
-
- echo "Building $TEIIDPROJ ... "
-
-cd $1/$TEIIDPROJ
-
-mvn -s ./settings.xml clean install
-
-echo "$TEIIDPROJ:  mvn -s ../teiid/settings.xml clean install " >> ../buildCommands.txt
-
-echo "Built $TEIIDPROJ"
-
-
-echo "Building teiid-rhq... "
-
-cd $1/teiid-rhq
-
-mvn -s ./settings.xml clean install
-
-echo "teiid-rhq:  mvn -s ./settings.xml clean install" >> ../buildCommands.txt
-
-echo "Built teiid-rhq"
-
-
-echo "Building teiid-extensions... "
-
-cd $1/teiid-extensions
-
-mvn -s ./settings.xml clean install
-
-echo "teiid-extensions:  mvn -s ./settings.xml clean install" >> ../buildCommands.txt
-
-echo "Built teiid-extensions"
-
-#TEIIDPROJ=teiid-tools
-
-# echo "Building $TEIIDPROJ ... "
-
-#cd $1/$TEIIDPROJ
-
-#mvn -s ./settings.xml clean install
-
-#echo "$TEIIDPROJ:  mvn -s ../teiid/settings.xml clean install " >> ../buildCommands.txt
-
-#echo "Built $TEIIDPROJ"
 
