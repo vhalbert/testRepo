@@ -13,10 +13,12 @@
         <profile>
             <id>teiid-project</id>
             <activation>
-                <property>
-                    <name>teiid</name>
-                </property>
-            </activation>   	
+            	<activeByDefault>false</activeByDefault>
+                    <property>
+                        <name>project</name> 
+                                <value>teiid</value>
+                    </property>           	
+	            </activation>   	
             <build>
                     <plugins>
                         <plugin>
@@ -49,9 +51,11 @@
         <profile>
             <id>teiid-rhq-project</id>
             <activation>
-                <property>
-                    <name>teiid-rhq</name>
-                </property>
+            	<activeByDefault>false</activeByDefault>
+                   <property>
+                        <name>project</name> 
+                                <value>teiid-rhq</value>
+                    </property>            	
             </activation>   	
             <build>
                     <plugins>
@@ -84,9 +88,11 @@
          <profile>
             <id>teiid-dashboard-project</id>
             <activation>
-                <property>
-                    <name>teiid-dashboard</name>
-                </property>
+            	<activeByDefault>false</activeByDefault>
+                   <property>
+                        <name>project</name> 
+                                <value>teiid-dashboard</value>
+                    </property>            	
             </activation>   	
             <build>
                     <plugins>
@@ -120,9 +126,11 @@
          <profile>
             <id>teiid-quickstarts-project</id>
             <activation>
-                <property>
-                    <name>teiid-quickstarts</name>
-                </property>
+            	<activeByDefault>false</activeByDefault>
+   				<property>
+                            <name>project</name> 
+                                <value>teiid-quickstarts</value>
+                        </property>
             </activation>   	
             <build>
                     <plugins>
@@ -156,9 +164,11 @@
           <profile>
             <id>teiid-web-console-project</id>
             <activation>
-                <property>
-                    <name>teiid-web-console</name>
-                </property>
+            	<activeByDefault>false</activeByDefault>
+                   <property>
+                        <name>project</name> 
+                                <value>teiid-web-console</value>
+                    </property>
             </activation>   	
             <build>
                     <plugins>
@@ -191,9 +201,11 @@
          <profile>
             <id>teiid-extensions-project</id>
             <activation>
-                <property>
-                    <name>teiid-extensions</name>
-                </property>
+            	<activeByDefault>false</activeByDefault>
+                   <property>
+                        <name>project</name> 
+                                <value>teiid-extensions</value>
+                    </property>
             </activation>   	
             <build>
                     <plugins>
