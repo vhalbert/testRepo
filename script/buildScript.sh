@@ -1,13 +1,15 @@
 #!/bin/bash
 
- 
- TEIIDPROJ=$2
 
- echo "Building Project: $TEIIDPROJ ..."
 
-cd $1/$TEIIDPROJ
+TEIIDPROJ=teiid
 
-if [ "$TEIIDPROJ" = "teiid" ]; then
+if [ ! -d "$1/$TEIIDPROJ" ]; then
+	echo "Project: $TEIIDPROJ was not checkout"
+	
+else
+
+	cd $1/$TEIIDPROJ
 
 	export MAVEN_OPTS="-Xms512m -Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=512m"
 
@@ -20,7 +22,13 @@ if [ "$TEIIDPROJ" = "teiid" ]; then
 
 fi
 
-if [ "$TEIIDPROJ" = "teiid-quickstarts" ]; then
+TEIIDPROJ=teiid-quickstarts
+
+if [ ! -d "$1/$TEIIDPROJ" ]; then
+	echo "Project: $TEIIDPROJ was not checkout"
+	
+else
+	cd $1/$TEIIDPROJ
 
 	mvn -s ./settings.xml clean install -Ddist
 
@@ -28,7 +36,14 @@ if [ "$TEIIDPROJ" = "teiid-quickstarts" ]; then
 
 fi
 
-if [ "$TEIIDPROJ" = "teiid-dashboard" ]; then
+TEIIDPROJ=teiid-dashboard
+
+if [ ! -d "$1/$TEIIDPROJ" ]; then
+	echo "Project: $TEIIDPROJ was not checkout"
+	
+else
+
+	cd $1/$TEIIDPROJ
 
 	mvn -s ./settings.xml clean install -Pfull
 
@@ -36,7 +51,14 @@ if [ "$TEIIDPROJ" = "teiid-dashboard" ]; then
 
 fi
 
-if [ "$TEIIDPROJ" = "teiid-webconsole" ]; then
+TEIIDPROJ=teiid-webconsole
+
+if [ ! -d "$1/$TEIIDPROJ" ]; then
+	echo "Project: $TEIIDPROJ was not checkout"
+	
+else
+
+	cd $1/$TEIIDPROJ
 
 	mvn -s ./settings.xml clean install
 
@@ -44,7 +66,14 @@ if [ "$TEIIDPROJ" = "teiid-webconsole" ]; then
 
 fi
 
-if [ "$TEIIDPROJ" = "teiid-rhq" ]; then
+TEIIDPROJ=teiid-rhq
+
+if [ ! -d "$1/$TEIIDPROJ" ]; then
+	echo "Project: $TEIIDPROJ was not checkout"
+	
+else
+
+	cd $1/$TEIIDPROJ
 
 	mvn -s ./settings.xml clean install
 
@@ -52,7 +81,14 @@ if [ "$TEIIDPROJ" = "teiid-rhq" ]; then
 
 fi
 
-if [ "$TEIIDPROJ" = "teiid-extensions" ]; then
+TEIIDPROJ=teiid-extensions
+
+if [ ! -d "$1/$TEIIDPROJ" ]; then
+	echo "Project: $TEIIDPROJ was not checkout"
+	
+else
+
+	cd $1/$TEIIDPROJ
 
 	mvn -s ./settings.xml clean install
 
@@ -60,7 +96,14 @@ if [ "$TEIIDPROJ" = "teiid-extensions" ]; then
 
 fi
 
-if [ "$TEIIDPROJ" = "teiid-tools" ]; then
+TEIIDPROJ=teiid-tools
+
+if [ ! -d "$1/$TEIIDPROJ" ]; then
+	echo "Project: $TEIIDPROJ was not checkout"
+	
+else
+
+	cd $1/$TEIIDPROJ
 
 	mvn -s ./settings.xml clean install
 

@@ -35,7 +35,6 @@
 								<executable>${script.loc}/buildScript.sh</executable>
 								 <arguments>
 									<argument>${script.loc}/repos</argument>
-									<argument>${project}</argument>
 								  </arguments>
 							</configuration>
                         </plugin>
