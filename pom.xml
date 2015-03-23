@@ -9,6 +9,8 @@
 	<description>Builds the Product Release Handoff Doc for Teiid</description>
 	<version>0.0.1-SNAPSHOT</version>
 	
+	
+	
     <profiles>
         <profile>
             <id>teiid-project</id>
@@ -27,24 +29,36 @@
  							 <version>1.2.1</version> 
   							<executions>
 								<execution>
-									<phase>compile</phase>
-									<goals>
-										<goal>exec</goal>
-									</goals>
-								</execution>
+									<phase>process-classes</phase> 
+									<goals><goal>exec</goal></goals>   
+									<configuration>
+										<executable>${script.loc}/echoCommand.sh</executable>
+								 		<arguments>
+								 			<argument>"teiid:  mvn -s ./settings.xml clean install -Prelease"</argument>
+								  		</arguments>	
+								  		<workingDirectory>${script.loc}</workingDirectory>								
+									</configuration>
+								</execution>	  							
+								<execution>
+									<id>build-teiid</id> 
+									<phase>process-classes</phase> 
+									<goals><goal>exec</goal></goals>   
+  									<configuration>
+										<executable>mvn</executable>
+										 <arguments>
+											<argument>-s</argument>
+											<argument>${repo.loc}/teiid/settings.xml</argument>
+											<argument>clean</argument>
+											<argument>install</argument>
+											<argument>-Prelease</argument>
+										  </arguments>
+										  <workingDirectory>${repo.loc}/teiid</workingDirectory>
+									</configuration>
+								</execution>  														
 							</executions>
-							<configuration>
-								<executable>mvn</executable>
-								 <arguments>
-									<argument>-s</argument>
-									<argument>./settings.xml</argument>
-									<argument>clean</argument>
-									<argument>install</argument>
-									<argument>-Prelease</argument>
-								  </arguments>
-								  <workingDirectory>${repo.loc}/teiid</workingDirectory>
-							</configuration>
-                        </plugin>
+                        </plugin>                      						
+
+
                     </plugins>
             </build>
   		</profile>    
@@ -65,23 +79,34 @@
  							 <version>1.2.1</version> 
   							<executions>
 								<execution>
-									<phase>compile</phase>
-									<goals>
-										<goal>exec</goal>
-									</goals>
+									<phase>process-classes</phase> 
+									<goals><goal>exec</goal></goals>   
+									<configuration>
+										<executable>${script.loc}/echoCommand.sh</executable>
+								 		<arguments>
+								 			<argument>"teiid-rhq:  mvn -s ./settings.xml clean install"</argument>
+								  		</arguments>	
+								  		<workingDirectory>${script.loc}</workingDirectory>								
+									</configuration>
+								</execution>	  							
+								<execution>
+									<id>build-teiid-rhq</id> 
+									<phase>process-classes</phase> 
+									<goals><goal>exec</goal></goals>   
+  									<configuration>
+										<executable>mvn</executable>
+										 <arguments>
+											<argument>-s</argument>
+											<argument>${repo.loc}/teiid-rhq/settings.xml</argument>
+											<argument>clean</argument>
+											<argument>install</argument>
+										  </arguments>
+										  <workingDirectory>${repo.loc}/teiid-rhq</workingDirectory>
+									</configuration>
 								</execution>
+							
 							</executions>
-							<configuration>
-								<executable>mvn</executable>
-								 <arguments>
-									<argument>-s</argument>
-									<argument>./settings.xml</argument>
-									<argument>clean</argument>
-									<argument>install</argument>
-								  </arguments>
-								  <workingDirectory>${repo.loc}/teiid-rhq</workingDirectory>
-							</configuration>
-                        </plugin>
+                        </plugin>                          
                     </plugins>
             </build>
   		</profile>
@@ -96,30 +121,40 @@
             </activation>   	
             <build>
                     <plugins>
-                        <plugin>
+                       <plugin>
   							<groupId>org.codehaus.mojo</groupId>
  							 <artifactId>exec-maven-plugin</artifactId>
  							 <version>1.2.1</version> 
   							<executions>
 								<execution>
-									<phase>compile</phase>
-									<goals>
-										<goal>exec</goal>
-									</goals>
-								</execution>
+									<phase>process-classes</phase> 
+									<goals><goal>exec</goal></goals>   
+									<configuration>
+										<executable>${script.loc}/echoCommand.sh</executable>
+								 		<arguments>
+								 			<argument>"teiid-dashboard:  mvn -s ./settings.xml clean install -Pfull"</argument>
+								  		</arguments>	
+								  		<workingDirectory>${script.loc}</workingDirectory>								
+									</configuration>
+								</execution>	  							
+								<execution>
+									<id>build-teiid-dashboard</id> 
+									<phase>process-classes</phase> 
+									<goals><goal>exec</goal></goals>   
+  									<configuration>
+										<executable>mvn</executable>
+										 <arguments>
+											<argument>-s</argument>
+											<argument>${repo.loc}/teiid/settings.xml</argument>
+											<argument>clean</argument>
+											<argument>install</argument>
+											<argument>-Pfull</argument>
+										  </arguments>
+										  <workingDirectory>${repo.loc}/teiid-dashboard</workingDirectory>
+									</configuration>
+								</execution>					
 							</executions>
-							<configuration>
-								<executable>mvn</executable>
-								 <arguments>
-									<argument>-s</argument>
-									<argument>./settings.xml</argument>
-									<argument>clean</argument>
-									<argument>install</argument>
-									<argument>-Pfull</argument>
-								  </arguments>
-								  <workingDirectory>${repo.loc}/teiid-dashboard</workingDirectory>
-							</configuration>
-                        </plugin>
+                        </plugin>                     
                     </plugins>
             </build>
   		</profile>
@@ -134,30 +169,40 @@
             </activation>   	
             <build>
                     <plugins>
-                        <plugin>
+                       <plugin>
   							<groupId>org.codehaus.mojo</groupId>
  							 <artifactId>exec-maven-plugin</artifactId>
  							 <version>1.2.1</version> 
   							<executions>
 								<execution>
-									<phase>compile</phase>
-									<goals>
-										<goal>exec</goal>
-									</goals>
-								</execution>
+									<phase>process-classes</phase> 
+									<goals><goal>exec</goal></goals>   
+									<configuration>
+										<executable>${script.loc}/echoCommand.sh</executable>
+								 		<arguments>
+								 			<argument>"teiid-quickstarts:  mvn -s ./settings.xml clean install -Pdist"</argument>
+								  		</arguments>	
+								  		<workingDirectory>${script.loc}</workingDirectory>								
+									</configuration>
+								</execution>	  							
+								<execution>
+									<id>build-teiid-quickstarts</id> 
+									<phase>process-classes</phase> 
+									<goals><goal>exec</goal></goals>   
+  									<configuration>
+										<executable>mvn</executable>
+										 <arguments>
+											<argument>-s</argument>
+											<argument>${repo.loc}/teiid-quickstarts/settings.xml</argument>
+											<argument>clean</argument>
+											<argument>install</argument>
+											<argument>-Ddist</argument>
+										  </arguments>
+										  <workingDirectory>${repo.loc}/teiid-quickstarts</workingDirectory>
+									</configuration>
+								</execution>					
 							</executions>
-							<configuration>
-								<executable>mvn</executable>
-								 <arguments>
-									<argument>-s</argument>
-									<argument>./settings.xml</argument>
-									<argument>clean</argument>
-									<argument>install</argument>
-									<argument>-Ddist</argument>
-								  </arguments>
-								  <workingDirectory>${repo.loc}/teiid-quickstarts</workingDirectory>
-							</configuration>
-                        </plugin>
+                        </plugin>                     
                     </plugins>
             </build>
   		</profile> 	
@@ -172,29 +217,39 @@
             </activation>   	
             <build>
                     <plugins>
-                        <plugin>
+                       <plugin>
   							<groupId>org.codehaus.mojo</groupId>
  							 <artifactId>exec-maven-plugin</artifactId>
  							 <version>1.2.1</version> 
   							<executions>
 								<execution>
-									<phase>compile</phase>
-									<goals>
-										<goal>exec</goal>
-									</goals>
-								</execution>
+									<phase>process-classes</phase> 
+									<goals><goal>exec</goal></goals>   
+									<configuration>
+										<executable>${script.loc}/echoCommand.sh</executable>
+								 		<arguments>
+								 			<argument>"teiid-web-console:  mvn -s ./settings.xml clean install"</argument>
+								  		</arguments>	
+								  		<workingDirectory>${script.loc}</workingDirectory>								
+									</configuration>
+								</execution>	  							
+								<execution>
+									<id>build-teiid-web-console</id> 
+									<phase>process-classes</phase> 
+									<goals><goal>exec</goal></goals>   
+  									<configuration>
+										<executable>mvn</executable>
+										 <arguments>
+											<argument>-s</argument>
+											<argument>${repo.loc}/teiid/settings.xml</argument>
+											<argument>clean</argument>
+											<argument>install</argument>
+										  </arguments>
+										  <workingDirectory>${repo.loc}/teiid-web-console</workingDirectory>
+									</configuration>
+								</execution>					
 							</executions>
-							<configuration>
-								<executable>mvn</executable>
-								 <arguments>
-									<argument>-s</argument>
-									<argument>../teiid/settings.xml</argument>
-									<argument>clean</argument>
-									<argument>install</argument>
-								  </arguments>
-								  <workingDirectory>${repo.loc}/teiid-web-console</workingDirectory>
-							</configuration>
-                        </plugin>
+                        </plugin>                      
                     </plugins>
             </build>
   		</profile> 
@@ -209,30 +264,39 @@
             </activation>   	
             <build>
                     <plugins>
-                        <plugin>
+                       <plugin>
   							<groupId>org.codehaus.mojo</groupId>
  							 <artifactId>exec-maven-plugin</artifactId>
  							 <version>1.2.1</version> 
   							<executions>
 								<execution>
-									<phase>compile</phase>
-									<goals>
-										<goal>exec</goal>
-									</goals>
-								</execution>
+									<phase>process-classes</phase> 
+									<goals><goal>exec</goal></goals>   
+									<configuration>
+										<executable>${script.loc}/echoCommand.sh</executable>
+								 		<arguments>
+								 			<argument>"teiid-extensions:  mvn -s ./settings.xml clean install"</argument>
+								  		</arguments>	
+								  		<workingDirectory>${script.loc}</workingDirectory>								
+									</configuration>
+								</execution>	  							
+								<execution>
+									<id>build-teiid-extensions</id> 
+									<phase>process-classes</phase> 
+									<goals><goal>exec</goal></goals>   
+  									<configuration>
+										<executable>mvn</executable>
+										 <arguments>
+											<argument>-s</argument>
+											<argument>${repo.loc}/teiid/settings.xml</argument>
+											<argument>clean</argument>
+											<argument>install</argument>
+										  </arguments>
+										  <workingDirectory>${repo.loc}/teiid-extensions</workingDirectory>
+									</configuration>
+								</execution>					
 							</executions>
-							<configuration>
-								<executable>mvn</executable>
-								<classpathScope>compile</classpathScope>
-								 <arguments>
-									<argument>-s</argument>
-									<argument>./settings.xml</argument>
-									<argument>clean</argument>
-									<argument>install</argument>
-								  </arguments>
-								  <workingDirectory>${repo.loc}/teiid-extensions</workingDirectory>
-							</configuration>
-                        </plugin>
+                        </plugin>                       
                     </plugins>
             </build>
   		</profile>  					 		
