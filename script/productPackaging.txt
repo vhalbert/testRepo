@@ -1,0 +1,82 @@
+This covers the build artifacts required for product, installation location, and configuration, etc.
+  
+Based on JBoss EAP 6.4
+
+*************************
+teiid:    build/target:
+*************************
+
+-	(JDBC Driver)  teiid-{version}-jdbc.jar
+
+	DV kit: placed in folder dataVirtualization/jdbc
+	CSP: 	delivered, as is
+	
+-	(Admin Shell tool)  teiid-{version}-adminshell-dist.zip
+
+	DV kit:  unzipped into folder dataVirtualization/teiid-adminshell
+	
+-	(JBoss Kit)  teiid-{version}-jboss-dist.zip
+	DV kit:
+		unzip and
+		-  copy files in bin/scripts -->  cli-scripts
+		-  copy docs		   -->	docs
+		-  copy modules/system/layers/dv  -->  modules/system/layers/dv
+		-  don't copy standalone-teiid.xml
+				
+-   Source Code:  teiid-{version}-src.zip
+		-   delivered as part of DV source code
+
+
+
+*************************
+teiid-dashboard:   builder/target
+*************************
+
+
+-	(WAR) teiid-dashbuilder-jboss-as7.war
+	DV kit:   
+		-  expand the war into folder dataVirtualization/teiid-dashboard
+			resulting folder structure:  dataVirtualization/teiid-dashboard/teiid-dashboard-builder.war
+
+
+*************************
+teiid-quickstarts:  dist/target
+*************************
+
+-	(Zip) teiid-quickstart-{vesrion}-dist.zip
+	DV kit: unzip under jboss root, renaming directory to quickstarts
+
+
+*************************
+teiid-rhq:    teiid-rhq-plugin/target
+*************************
+
+-	(Jar) teiid-rhq-plugin-{version}.jar
+	Productization has a special build to create the JON plugin
+
+
+*************************
+teiid-extensions (teiid logging):	build/target
+*************************
+
+-	(Zip) build-{version}-dist.zip
+	
+	DV kit:  unzip and  
+	-  copy bin/scripts → cli-scripts
+	-  copy modules/system/layers/dv  -->  modules/system/layers/dv
+	-  don’t use standalone
+
+
+*************************
+teiid-web-console:	dist/target
+*************************
+
+-	(Zip) teiid-console-dist-{version}-jboss-as7.zip
+	DV kit:  Productization will handle integration
+	
+
+*************************
+teiid-tools
+*************************
+
+only run to get the artifacts into the maven repo that’s delivered.

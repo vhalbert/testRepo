@@ -86,6 +86,7 @@ FILE_TO_READ=$scriptDir/repositories.properties
 REPOSITORIES=$(cat repURLS.txt)
 MAVEN=$(mvn -version)
 NOTES=$(cat notes.properties)
+PACKAGE=$(cat productPackaging.txt)
 BLDCOMMAND=$(cat buildCommands.txt)
 # JAVA version as it needs a workaround
 java -version 2>>javaVersion.txt
@@ -107,6 +108,10 @@ Source Product Tag: $productTag
 Product Page: 
 https://pp.engineering.redhat.com/pp/product/eds/overview
 
+-----------------------------------------------------------------------  
+                     Component owners contacts                           
+------------------------------------------------------------------------
+$CONTACTS
 
 ------------------------------------------------------------------------
                           Build Tools                               
@@ -136,9 +141,10 @@ MAVEN_OPTS:
 $MAVEN_OPTS
 
 -----------------------------------------------------------------------  
-                     Component owners contacts                           
+Build artifacts for product, installation location, and configuration                           
 ------------------------------------------------------------------------
-$CONTACTS
+$PACKAGE
+
 
 ------------------------------------------------------------------------
                               Notes                                     
