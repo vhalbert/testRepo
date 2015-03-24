@@ -132,7 +132,7 @@
 									<configuration>
 										<executable>${script.loc}/echoCommand.sh</executable>
 								 		<arguments>
-								 			<argument>"teiid-dashboard:  mvn -s ./settings.xml clean install -Pfull"</argument>
+								 			<argument>"teiid-dashboard:  mvn -s ./settings.xml clean install -Dfull"</argument>
 								  		</arguments>	
 								  		<workingDirectory>${script.loc}</workingDirectory>								
 									</configuration>
@@ -148,7 +148,7 @@
 											<argument>${repo.loc}/teiid/settings.xml</argument>
 											<argument>clean</argument>
 											<argument>install</argument>
-											<argument>-Pfull</argument>
+											<argument>-Dfull</argument>
 										  </arguments>
 										  <workingDirectory>${repo.loc}/teiid-dashboard</workingDirectory>
 									</configuration>
@@ -196,7 +196,7 @@
 											<argument>${repo.loc}/teiid-quickstarts/settings.xml</argument>
 											<argument>clean</argument>
 											<argument>install</argument>
-											<argument>-Ddist</argument>
+											<argument>-Pdist</argument>
 										  </arguments>
 										  <workingDirectory>${repo.loc}/teiid-quickstarts</workingDirectory>
 									</configuration>
