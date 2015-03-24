@@ -41,14 +41,6 @@ if [ ! -d "../reports/dependencyTree" ]; then
 	mkdir ../reports/dependencyTree
 fi
 
-if [ -f "$scriptDir/repURLS.txt" ]; then
-    rm $scriptDir/repURLS.txt
-fi
-
-if [ -f "$scriptDir/buildCommands.txt" ]; then
-    rm $scriptDir/buildCommands.txt
-fi
-
 
 mv $scriptDir/repos/repURLS.txt $scriptDir
 mv $scriptDir/repos/buildCommands.txt $scriptDir
