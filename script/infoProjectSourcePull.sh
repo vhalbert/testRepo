@@ -6,26 +6,22 @@ SCRIPT="$(cd $(dirname "$0") && pwd)/$(basename "$0")"
 scriptDir=$(dirname "$SCRIPT")
 
 
-if [ $# != 3 ] ; then
+if [ $# != 1 ] ; then
     echo
     echo "Usage:"
-    echo "  $0  releaseTag repoUsername repoPassword"
+    echo "  $0  releaseTag"
     echo "For example:"
-    echo "  $0  sync-6.2.x-2015.03.18 username  password"
+    echo "  $0  sync-6.2.x-ER1"
     echo
     exit 1
 fi
 
 echo "The releaseTag is: "$1
-echo "The repo username is: " $2
 echo -n "Is this ok? (Hit control-c if is not): "
 read ok
 
 
 productTag=$1
-BLD_USERNAME=$2
-BLD_PASSWORD=$3
-PARMS="$BLD_USERNAME:$BLD_PASSWORD"
 
 cd $scriptDir
 
@@ -49,21 +45,18 @@ fi
 echo "$productTag" >> releaseTag.txt
 
 
-FILE_TO_READ=$scriptDir/repositories.properties
+FILE_TO_READ=$scriptDir/projectRepositories.properties
 
-PREFIX="http://"
 cd $scriptDir/repos
 
    while read line; do
      if [ -n "$line" ]; then
          
-       echo "$PREFIX$line" >> repURLS.txt
+       echo "$line" >> repURLS.txt
        
-       url="$PREFIX$PARMS$line"
+       echo "clone: $line"
        
-       echo "clone: $url"
-       
-       git clone --branch $productTag $url 
+       git clone --branch $line
      fi
    done < $FILE_TO_READ
  

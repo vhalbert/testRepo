@@ -6,26 +6,27 @@ Based on JBoss EAP 6.4
 teiid:    build/target:
 *************************
 
--	(JDBC Driver)  teiid-{version}-jdbc.jar
+1.	(ZIP)   teiid-{version}-jboss-dist.zip
 
-	DV kit: placed in folder dataVirtualization/jdbc
-	CSP: 	delivered, as is
+	DV kit:  unzip at the JBOSS_HOME directory 
 	
--	(Admin Shell tool)  teiid-{version}-adminshell-dist.zip
+	includes:
+		-	cli-scripts
+		-	docs
+		-	modules/system/layers/dv...
+		-	dataVirtualization/
+			-	jdbc:   teiid-{version}-jdbc.jar
+			-	admin-shell:  teiid-{version}-adminshell-dist.zip  (JBDVPL-196) 
+			-	vdb:  ModeShape.vdb
+		
+		
 
-	DV kit:  unzipped into folder dataVirtualization/teiid-adminshell
-	
--	(JBoss Kit)  teiid-{version}-jboss-dist.zip
-	DV kit:
-		unzip and
-		-  copy files in bin/scripts -->  cli-scripts
-		-  copy docs		   -->	docs
-		-  copy modules/system/layers/dv  -->  modules/system/layers/dv
-		-  don't copy standalone-teiid.xml
+	CSP:  the teiid-{version}-jdbc.jar also needs to be pushed to the CSP
+
 				
--   Source Code:  teiid-{version}-src.zip
-		-   delivered as part of DV source code
+2.   (ZIP)  Source Code:  teiid-{version}-src.zip
 
+		-   delivered as part of DV source code
 
 
 *************************
@@ -33,18 +34,21 @@ teiid-dashboard:   builder/target
 *************************
 
 
--	(WAR) teiid-dashbuilder-jboss-as7.war
-	DV kit:   
-		-  expand the war into folder dataVirtualization/teiid-dashboard
-			resulting folder structure:  dataVirtualization/teiid-dashboard/teiid-dashboard-builder.war
+-	(ZIP) teiid-dashboard-builder-{version}-dist.zip
 
+	DV kit:  unzip at the JBOSS_HOME directory 
 
+	includes:
+		-  cli-scripts
+		-  dataVirtualization/teiid-dashboard/teiid-dashboard-builder.war (expanded)
+		
 *************************
 teiid-quickstarts:  dist/target
 *************************
 
 -	(Zip) teiid-quickstart-{vesrion}-dist.zip
-	DV kit: unzip under jboss root, renaming directory to quickstarts
+
+	DV kit: unzip at the JBOSS_HOME directory , renaming directory to quickstarts
 
 
 *************************
@@ -52,6 +56,7 @@ teiid-rhq:    teiid-rhq-plugin/target
 *************************
 
 -	(Jar) teiid-rhq-plugin-{version}.jar
+
 	Productization has a special build to create the JON plugin
 
 
@@ -59,12 +64,14 @@ teiid-rhq:    teiid-rhq-plugin/target
 teiid-extensions (teiid logging):	build/target
 *************************
 
--	(Zip) build-{version}-dist.zip
+-	(Zip) build-extensions-{version}-dist.zip
 	
-	DV kit:  unzip and  
-	-  copy bin/scripts → cli-scripts
-	-  copy modules/system/layers/dv  -->  modules/system/layers/dv
-	-  don’t use standalone
+	DV kit:  unzip at the JBOSS_HOME directory 
+	
+	includes:
+		-	cli-scripts
+		-   dataVirtualization/logging/database-service.jar  referenced in cli-script for deployment
+		-	module for teiid database logging
 
 
 *************************
@@ -72,6 +79,7 @@ teiid-web-console:	dist/target
 *************************
 
 -	(Zip) teiid-console-dist-{version}-jboss-as7.zip
+
 	DV kit:  Productization will handle integration
 	
 

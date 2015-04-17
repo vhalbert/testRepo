@@ -6,25 +6,25 @@ SCRIPT="$(cd $(dirname "$0") && pwd)/$(basename "$0")"
 scriptDir=$(dirname "$SCRIPT")
 
 
-if [ $# != 3 ] ; then
+if [ $# != 2 ] ; then
     echo
     echo "Usage:"
-    echo "  $0  productTag targetProdBuild cutOffDate"
+    echo "  $0  targetProdBuild cutOffDate"
     echo "For example:"
     echo "  $0  6.2 ER6 2015-02-27"
     echo
     exit 1
 fi
 
-echo "The prodcutTag is: "$1
-echo "The target product build is: "$2
-echo "The cutoff date is: " $3
+#echo "The prodcutTag is: "$1
+echo "The target product build is: "$1
+echo "The cutoff date is: " $2
 echo -n "Is this ok? (Hit control-c if is not): "
 read ok
 
-productTag=$1
-targetProdBuild=$2
-cutOffDate=$3
+#productTag=$1
+targetProdBuild=$1
+cutOffDate=$2
 
 
 cd $scriptDir
@@ -42,6 +42,8 @@ if [ ! -d "../reports/dependencyTree" ]; then
 fi
 
 
+PRODUCT_TAG=$(cat releaseTag.txt)
+
 mv $scriptDir/repos/repURLS.txt $scriptDir
 mv $scriptDir/repos/buildCommands.txt $scriptDir
 
@@ -52,12 +54,12 @@ fileDir=$(pwd)
 
 #checks if $productTag is already existing in a filename
 cd $fileDir
-LIST=$(find . -name "$productTag*.txt" | sort)
+LIST=$(find . -name "$PRODUCT_TAG*.txt" | sort)
 
 # all filename containing $productTag are listed. The filename with the highest *.txt is listed as last.
 # The LIST is reverted and the value * extracted
 counter=$(echo $LIST | rev | cut -c5)
-oneFile=$productTag-$counter.txt
+oneFile=$PRODUCT_TAG-$counter.txt
 
 if [ -f $oneFile ];
    then 
@@ -67,13 +69,13 @@ if [ -f $oneFile ];
 fi    
 
 # name of file to be written and pushed  
-fileToWrite=$productTag-$counter.txt
+fileToWrite=$PRODUCT_TAG-$counter.txt
 
 cd $scriptDir
 
 CONTACTS=$(cat mails.properties)
 
-FILE_TO_READ=$scriptDir/repositories.properties
+#FILE_TO_READ=$scriptDir/repositories.properties
 
 REPOSITORIES=$(cat repURLS.txt)
 MAVEN=$(mvn -version)
@@ -94,7 +96,7 @@ cat <<EOF >$fileToWrite
 Report Date: $DATETIME
 Code Cutoff Date: $cutOffDate
 Target Product Build: $targetProdBuild
-Source Product Tag: $productTag
+Source Product Tag: $PRODUCT_TAG
 
  
 Product Page: 
@@ -150,8 +152,8 @@ EOF
 # makes missing directories for the dependency:trees
    cd $scriptDir
    cd ../reports/dependencyTree
-   mkdir $productTag-$counter
-   export dependencyDir=$productTag-$counter
+   mkdir $PRODUCT_TAG-$counter
+   export dependencyDir=$PRODUCT_TAG-$counter
    cd $scriptDir
    rm javaVersion.txt
    mv $fileToWrite $fileDir/

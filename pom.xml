@@ -21,7 +21,7 @@
                                 <value>teiid</value>
                     </property>           	
 	            </activation>   	
-            <build>
+            	<build>
                     <plugins>
                         <plugin>
   							<groupId>org.codehaus.mojo</groupId>
@@ -299,6 +299,53 @@
                         </plugin>                       
                     </plugins>
             </build>
-  		</profile>  					 		
+  		</profile>  
+         <profile>
+            <id>oreva-project</id>
+            <activation>
+            	<activeByDefault>false</activeByDefault>
+   				<property>
+                            <name>project</name> 
+                                <value>oreva</value>
+                        </property>
+            </activation>   	
+            <build>
+                    <plugins>
+                       <plugin>
+  							<groupId>org.codehaus.mojo</groupId>
+ 							 <artifactId>exec-maven-plugin</artifactId>
+ 							 <version>1.2.1</version> 
+  							<executions>
+								<execution>
+									<phase>process-classes</phase> 
+									<goals><goal>exec</goal></goals>   
+									<configuration>
+										<executable>${script.loc}/echoCommand.sh</executable>
+								 		<arguments>
+								 			<argument>"oreva:  mvn -s ../teiid/settings.xml clean install"</argument>
+								  		</arguments>	
+								  		<workingDirectory>${script.loc}</workingDirectory>								
+									</configuration>
+								</execution>	  							
+								<execution>
+									<id>build-oreva</id> 
+									<phase>process-classes</phase> 
+									<goals><goal>exec</goal></goals>   
+  									<configuration>
+										<executable>mvn</executable>
+										 <arguments>
+											<argument>-s</argument>
+											<argument>${repo.loc}/teiid/settings.xml</argument>
+											<argument>clean</argument>
+											<argument>install</argument>
+										  </arguments>
+										  <workingDirectory>${repo.loc}/oreva</workingDirectory>
+									</configuration>
+								</execution>					
+							</executions>
+                        </plugin>                     
+                    </plugins>
+            </build>
+  		</profile> 	  							 		
   	</profiles>
 </project>
