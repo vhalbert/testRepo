@@ -11,7 +11,7 @@ if [ $# != 2 ] ; then
     echo "Usage:"
     echo "  $0  targetProdBuild cutOffDate"
     echo "For example:"
-    echo "  $0  6.2 ER6 2015-02-27"
+    echo "  $0  ER6 2015-02-27"
     echo
     exit 1
 fi

@@ -34,7 +34,7 @@
 									<configuration>
 										<executable>${script.loc}/echoCommand.sh</executable>
 								 		<arguments>
-								 			<argument>"teiid:  mvn -s ./settings.xml clean install -Prelease"</argument>
+								 			<argument>"teiid:  mvn -s ./settings.xml clean install -Preleasewithjavadoc javadoc:aggregate-jar"</argument>
 								  		</arguments>	
 								  		<workingDirectory>${script.loc}</workingDirectory>								
 									</configuration>
@@ -50,7 +50,8 @@
 											<argument>${repo.loc}/teiid/settings.xml</argument>
 											<argument>clean</argument>
 											<argument>install</argument>
-											<argument>-Prelease</argument>
+											<argument>-Preleasewithjavadoc</argument>
+											<argument>javadoc:aggregate-jar</argument>
 										  </arguments>
 										  <workingDirectory>${repo.loc}/teiid</workingDirectory>
 									</configuration>
