@@ -45,7 +45,7 @@ fi
 PRODUCT_TAG=$(cat releaseTag.txt)
 
 mv $scriptDir/repos/repURLS.txt $scriptDir
-mv $scriptDir/repos/buildCommands.txt $scriptDir
+#mv $scriptDir/repos/buildCommands.txt $scriptDir
 
 # where are the files stored
 cd ../reports/tags
