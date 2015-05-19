@@ -44,6 +44,7 @@
 									<phase>process-classes</phase> 
 									<goals><goal>exec</goal></goals>   
   									<configuration>
+  										<includePluginDependencies>true</includePluginDependencies>
 										<executable>mvn</executable>
 										 <arguments>
 											<argument>-s</argument>
@@ -95,6 +96,7 @@
 									<phase>process-classes</phase> 
 									<goals><goal>exec</goal></goals>   
   									<configuration>
+  										<includePluginDependencies>true</includePluginDependencies>
 										<executable>mvn</executable>
 										 <arguments>
 											<argument>-s</argument>
@@ -143,6 +145,7 @@
 									<phase>process-classes</phase> 
 									<goals><goal>exec</goal></goals>   
   									<configuration>
+  										<includePluginDependencies>true</includePluginDependencies>
 										<executable>mvn</executable>
 										 <arguments>
 											<argument>-s</argument>
@@ -191,6 +194,7 @@
 									<phase>process-classes</phase> 
 									<goals><goal>exec</goal></goals>   
   									<configuration>
+  										<includePluginDependencies>true</includePluginDependencies>
 										<executable>mvn</executable>
 										 <arguments>
 											<argument>-s</argument>
@@ -239,6 +243,7 @@
 									<phase>process-classes</phase> 
 									<goals><goal>exec</goal></goals>   
   									<configuration>
+  										<includePluginDependencies>true</includePluginDependencies>
 										<executable>mvn</executable>
 										 <arguments>
 											<argument>-s</argument>
@@ -286,6 +291,7 @@
 									<phase>process-classes</phase> 
 									<goals><goal>exec</goal></goals>   
   									<configuration>
+  										<includePluginDependencies>true</includePluginDependencies>
 										<executable>mvn</executable>
 										 <arguments>
 											<argument>-s</argument>
@@ -333,6 +339,7 @@
 									<phase>process-classes</phase> 
 									<goals><goal>exec</goal></goals>   
   									<configuration>
+  										<includePluginDependencies>true</includePluginDependencies>
 										<executable>mvn</executable>
 										 <arguments>
 											<argument>-s</argument>

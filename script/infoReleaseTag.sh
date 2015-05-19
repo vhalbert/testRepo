@@ -98,7 +98,7 @@ Code Cutoff Date: $cutOffDate
 Target Product Build: $targetProdBuild
 Source Product Tag: $PRODUCT_TAG
 
- 
+
 Product Page: 
 https://pp.engineering.redhat.com/pp/product/eds/overview
 
@@ -111,10 +111,10 @@ $CONTACTS
                           Build Tools                               
 ------------------------------------------------------------------------
 JAVA: 
-$JAVAV
+java version "1.7.0_75"
 
 MAVEN: 
-$MAVEN
+Apache Maven 3.1.1
 
 ------------------------------------------------------------------------
                         Sources to build                         
@@ -149,19 +149,23 @@ $NOTES
 
 EOF
 
+   
 # makes missing directories for the dependency:trees
    cd $scriptDir
-   cd ../reports/dependencyTree
-   mkdir $PRODUCT_TAG-$counter
-   export dependencyDir=$PRODUCT_TAG-$counter
-   cd $scriptDir
-   rm javaVersion.txt
-   mv $fileToWrite $fileDir/
+
 #creates the dependensyTrees
 ./dependencyTree.sh
+
+
 # pushes $fileToWrite to the blessed repository
 #   git add $fileToWrite
 #   git commit -m "$productTag"
    # best not to push automatically as it is always possible we need 
    # to fix something locally before pushing
    #git push origin master
+   
+
+   mv $fileToWrite $fileDir/
+
+   rm javaVersion.txt
+   
