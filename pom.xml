@@ -251,6 +251,16 @@
 											<argument>clean</argument>
 											<argument>install</argument>
 										  </arguments>
+										  <systemProperties>
+											<systemProperty>
+											  <key>java.util.prefs.systemRoot</key>
+											  <value>${script.loc}/.java</value>
+											</systemProperty>
+											<systemProperty>
+											  <key>java.util.prefs.userRoot</key>
+											  <value>${script.loc}/.userPrefs</value>
+											</systemProperty>												
+										  </systemProperties>										  
 										  <workingDirectory>${repo.loc}/teiid-web-console</workingDirectory>
 									</configuration>
 								</execution>					
