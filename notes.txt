@@ -1,0 +1,31 @@
+
+TEIID
+
+-  align with ip-bom
+
+-  change following projects pom to use "dv" module location
+a. teiid
+b. teiid-extension
+-  change where scripts get put into kit
+-  add teiid driver to datavirtualization location
+-  doc's etc.
+
+
+
+			
+	teiid project:
+
+-  prior to running teiid project build, need to run integration tests:  mvn install -Parquillian-tests
+-  (docs) mvn javadoc:aggregate-jar
+
+
+-  need to get the product override cli scripts being used.
+
+
+teiid-extensions:
+
+need to add property:  <jbossas-module-root>modules/system/layers/base</jbossas-module-root>
+change assembly to use property
+and change to "dv" on the product side
+
+
