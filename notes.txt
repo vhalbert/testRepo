@@ -29,3 +29,12 @@ change assembly to use property
 and change to "dv" on the product side
 
 
+
+TestRepo (each release)
+
+## How to add a new project repo
+
+	1.	change repositories.properies, adding the name of the repo
+	2.	change repositoryList.properties, adding the name of the repo
+	3.	change pom.xml, adding a build section for the repo
+

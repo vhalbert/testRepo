@@ -82,7 +82,8 @@ it is stored the repository.<br>
     
 
 
-## How to add a new repo
+## How to add a new project repo
 
 	1.	change repositories.properies, adding the name of the repo
-	2.	change pom.xml, adding a build section for the repo
+	2.	change repositoryList.properties, adding the name of the repo
+	3.	change pom.xml, adding a build section for the repo

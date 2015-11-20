@@ -21,7 +21,8 @@ FILE_TO_READ=$scriptDir/repositoryList.properties
        pwd   
        repository=$line
        echo "repository="$repository
-       mvn -s ./settings.xml dependency:tree | grep "^\[INFO\]" > $repository.txt
+       mvn -s ./settings.xml dependency:tree | grep "^\[INFO\]" > $scriptDir/logs/$repository.txt
+    
        mv $repository.txt $targetDir/$dependencyDir
        cd ..
      fi

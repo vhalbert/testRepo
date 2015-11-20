@@ -318,12 +318,12 @@
             </build>
   		</profile>  
          <profile>
-            <id>oreva-project</id>
+            <id>teiid-tools-project</id>
             <activation>
             	<activeByDefault>false</activeByDefault>
    				<property>
                             <name>project</name> 
-                                <value>oreva</value>
+                                <value>teiid-tools</value>
                         </property>
             </activation>   	
             <build>
@@ -345,7 +345,7 @@
 									</configuration>
 								</execution>	  							
 								<execution>
-									<id>build-oreva</id> 
+									<id>build-teiid-tools</id> 
 									<phase>process-classes</phase> 
 									<goals><goal>exec</goal></goals>   
   									<configuration>
@@ -357,7 +357,7 @@
 											<argument>clean</argument>
 											<argument>install</argument>
 										  </arguments>
-										  <workingDirectory>${repo.loc}/oreva</workingDirectory>
+										  <workingDirectory>${repo.loc}/teiid-tools</workingDirectory>
 									</configuration>
 								</execution>					
 							</executions>

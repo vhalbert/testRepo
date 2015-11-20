@@ -33,6 +33,10 @@ if [ ! -d "$scriptDir/repos" ]; then
 	mkdir $scriptDir/repos
 fi
 
+if [ ! -d "$scriptDir/logs" ]; then
+	mkdir $scriptDir/logs
+fi
+
 if [ -f "$scriptDir/repURLS.txt" ]; then
     rm $scriptDir/repos/repURLS.txt
 fi
@@ -42,7 +46,7 @@ if [ -f "$scriptDir/releaseTag.txt" ]; then
 fi
 
 
-echo "$productTag" >> releaseTag.txt
+echo "$productTag" >> $scriptDir/logs/releaseTag.txt
 
 
 FILE_TO_READ=$scriptDir/projectRepositories.properties
@@ -56,7 +60,7 @@ cd $scriptDir/repos
        
        echo "clone: $line"
        
-       git clone --branch $line
+       git clone --branch $1 $line
      fi
    done < $FILE_TO_READ
  

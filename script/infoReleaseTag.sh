@@ -73,14 +73,14 @@ fileToWrite=$PRODUCT_TAG-$counter.txt
 
 cd $scriptDir
 
-CONTACTS=$(cat mails.properties)
+CONTACTS=$(cat $scriptDir/handoff/mails.properties)
 
 #FILE_TO_READ=$scriptDir/repositories.properties
 
 REPOSITORIES=$(cat repURLS.txt)
 MAVEN=$(mvn -version)
-NOTES=$(cat notes.properties)
-PACKAGE=$(cat productPackaging.txt)
+NOTES=$(cat $scriptDir/handoff/notes.properties)
+PACKAGE=$(cat $scriptDir/handoff/productPackaging.txt)
 BLDCOMMAND=$(cat buildCommands.txt)
 # JAVA version as it needs a workaround
 java -version 2>>javaVersion.txt
