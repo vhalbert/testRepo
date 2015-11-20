@@ -1,12 +1,12 @@
 This covers the build artifacts required for product, installation location, and configuration, etc.
   
-Based on JBoss EAP 6.4
+Based on JBoss EAP 6.4.x
 
 *************************
 teiid:    build/target:
 *************************
 
-1.	(ZIP)   teiid-{version}-jboss-dist.zip
+1.	(ZIP) Teiid Dist zip -   teiid-{version}-jboss-dist.zip
 
 	DV kit:  unzip at the JBOSS_HOME directory 
 	
@@ -21,10 +21,11 @@ teiid:    build/target:
 		
 		
 
-	CSP:  the teiid-{version}-jdbc.jar also needs to be pushed to the CSP
+2.	(JAR) Teiid JDBC Driver:  teiid-{version}-jdbc.jar also needs to be pushed to the CSP
 
+3.  (ZIP) Teiid Embedded Kit:  teiid-{version}-embedded-dist 
 				
-2.   (ZIP)  Source Code:  teiid-{version}-src.zip
+4.  (ZIP)  Source Code:  teiid-{version}-src.zip
 
 		-   delivered as part of DV source code
 
@@ -87,4 +88,4 @@ teiid-web-console:	dist/target
 teiid-tools
 *************************
 
-only run to get the artifacts into the maven repo that’s delivered.
+-  the arche types are to be placed into the delivered maven repo
