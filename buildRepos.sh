@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# NOTE: Did you run infoSourcePull to clone all the repos
+
 # this is used for building projects
 
 CURDIR="$(cd $(dirname "$0") && pwd)/$(basename "$0")"

@@ -47,10 +47,9 @@ if [ -f "$scriptDir/repURLS.txt" ]; then
     rm $scriptDir/repos/repURLS.txt
 fi
 
-if [ -f "$scriptDir/releaseTag.txt" ]; then
-    rm $scriptDir/releaseTag.txt
+if [ -f "$scriptDir/logs/releaseTag.txt" ]; then
+    rm $scriptDir/logs/releaseTag.txt
 fi
-
 
 echo "$productTag" >> $scriptDir/logs/releaseTag.txt
 

@@ -42,9 +42,9 @@ if [ ! -d "../reports/dependencyTree" ]; then
 fi
 
 
-PRODUCT_TAG=$(cat releaseTag.txt)
+PRODUCT_TAG=$(cat $scriptDir/logs/releaseTag.txt)
 
-mv $scriptDir/repos/repURLS.txt $scriptDir
+mv $scriptDir/repURLS.txt $scriptDir
 #mv $scriptDir/repos/buildCommands.txt $scriptDir
 
 # where are the files stored
@@ -61,12 +61,13 @@ LIST=$(find . -name "$PRODUCT_TAG*.txt" | sort)
 counter=$(echo $LIST | rev | cut -c5)
 oneFile=$PRODUCT_TAG-$counter.txt
 
-if [ -f $oneFile ];
-   then 
-   counter=$((counter + 1))
- else
-   counter=1
-fi    
+#if [ -f $oneFile ];   then 
+#   counter=counter + 1
+# else
+#   counter=1
+#fi  
+
+counter=1  
 
 # name of file to be written and pushed  
 fileToWrite=$PRODUCT_TAG-$counter.txt
@@ -87,6 +88,7 @@ java -version 2>>javaVersion.txt
 JAVAV=$(cat javaVersion.txt)
 DATETIME=`date +%F-%H:%M`
 
+echo FileToWrite $fileToWrite
 
 cat <<EOF >$fileToWrite
 

@@ -36,7 +36,11 @@ that construct these files.
     			
     		
     4.	cd testRepo
-    
+
+    	run buildRepos.sh to buiild all projects 
+    	
+			or
+			    
     	run a maven build for each repo, example:
     	
     	mvn  -Dproject=[projectname] -Dscript.log=[pathToScriptDir] -Drepo.loc=[pathToCheckedOutRepos]
@@ -47,14 +51,12 @@ that construct these files.
     	There is a jenkins job that has this configured:  https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DV/job/teiid-engineering-to-product-handoff-build/
     	
     	
-    	Output files:
-    		-	$scriptDir/repos/repURLS.txt			:  	contains the repository URL's that were actually processed
+    	Output files:    		-	$scriptDir/repos/repURLS.txt			:  	contains the repository URL's that were actually processed
     		-	$scriptDir/repos/buildCommands.txt		:	contains the build commands used to build each repo
     		
-    	
     3. $ ./infoRelease.sh  <targetProdBuild> <codeCutoffDate>
     
-    example:  ./infoRelease.sh  8.7.0.1-prod-ipv6.2 DR1 2015-3-16
+    example:  ./infoRelease.sh  8.7.0.1-prod-ipv6.2 2015-3-16
 
 
 		Input files:

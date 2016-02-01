@@ -23,7 +23,9 @@ teiid:    build/target:
 
 2.	(JAR) Teiid JDBC Driver:  teiid-{version}-jdbc.jar also needs to be pushed to the CSP
 
-3.  (ZIP) Teiid Embedded Kit:  teiid-{version}-embedded-dist 
+3.  (ZIP) Teiid Embedded Kit:  teiid-{version}-embedded-dist.zip  
+
+	available as is, as a separate downloadable kit. (Tech Preview) 
 				
 4.  (ZIP)  Source Code:  teiid-{version}-src.zip
 
@@ -88,4 +90,24 @@ teiid-web-console:	dist/target
 teiid-tools
 *************************
 
--  the arche types are to be placed into the delivered maven repo
+-  the arche types are to be included in the delivered maven repo
+
+*************************
+teiid-modeshape (NEW)
+*************************
+
+-  (Zip)  teiid-modeshape-${version}-jboss-dist.zip
+
+located in the build/target directory
+
+
+	DV Kit:  unzip at the JBOSS_HOME directory
+
+	includes:
+		-	cli-scripts
+		-   modules...
+
+-  The  cli-scripts need to run by the installer when ModeShape is selected
+to be installed, and only after the ModeShape standalone/domain cli scripts are run.
+
+
